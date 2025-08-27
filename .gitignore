@@ -1,0 +1,18 @@
+# Ignorar archivos compilados
+*.class
+
+# Ignorar carpetas de compilación de Eclipse/Java
+/bin/
+/target/
+/out/
+
+# Ignorar configuración de Eclipse
+.settings/
+.project
+.classpath
+*.launch
+
+# Ignorar logs y archivos temporales
+*.log
+*.tmp
+*.bak
