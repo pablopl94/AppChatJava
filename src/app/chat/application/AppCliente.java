@@ -7,6 +7,6 @@ public class AppCliente {
 
 	public static void main(String[] args) {
 
-		new Marco(new PanelCliente(), "App Cliente");
+		new Marco(new PanelCliente(), "App Chats");
 	}
 }
