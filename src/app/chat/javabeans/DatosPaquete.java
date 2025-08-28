@@ -5,16 +5,16 @@ import java.io.Serializable;
 public class DatosPaquete implements Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private String nickname;
 	private String ip;
 	private String texto;
-	
+
 	public DatosPaquete() {}
-	
+
 	public DatosPaquete(String nickname, String ip, String texto) {
 		this.nickname = nickname;
 		this.ip = ip;
@@ -44,7 +44,7 @@ public class DatosPaquete implements Serializable {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
-	
-	
-	
+
+
+
 }

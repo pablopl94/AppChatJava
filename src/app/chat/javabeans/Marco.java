@@ -2,6 +2,7 @@ package app.chat.javabeans;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
 public class Marco extends JFrame {
 
@@ -9,7 +10,7 @@ public class Marco extends JFrame {
 
 		setTitle(titulo);
 		setBounds(600, 100, 300, 400);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		add(panel);
 		setVisible(true);
 	}
