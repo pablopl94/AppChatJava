@@ -127,6 +127,13 @@ public class PanelCliente extends JPanel {
                     datosOutput.setIp(ipTextField.getText());
                     datosOutput.setTexto(textArea.getText());
 
+                    //Creamos el stream (flujo de salida)
+                    ObjectOutputStream outputStean = new ObjectOutputStream(sock.getOutputStream());
+                    outputStean.writeObject(datosOutput);
+                    
+                    //Cerramos el socket
+                    sock.close();
+                    	
                 } catch (IOException e1) {
                     
                     e1.printStackTrace();
