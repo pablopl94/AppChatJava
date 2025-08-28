@@ -125,7 +125,7 @@ public class PanelCliente extends JPanel {
                     //Almacenar en las propiedades, los datos introducidos
                     datosOutput.setNickname(nickTextField.getText());
                     datosOutput.setIp(ipTextField.getText());
-                    datosOutput.setTexto(textArea.getText());
+                    datosOutput.setTexto(cuadroTexto.getText());
 
                     //Creamos el stream (flujo de salida)
                     ObjectOutputStream outputStean = new ObjectOutputStream(sock.getOutputStream());

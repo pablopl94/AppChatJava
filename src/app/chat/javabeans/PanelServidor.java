@@ -31,22 +31,31 @@ public class PanelServidor extends JPanel implements Runnable{
 			//Puerto a la escucha
 			ServerSocket server = new ServerSocket(9999);
 			
+			String nick, ip, texto;
+			DatosPaquete datosInput;
+			
 			while(true) {
 				
 				//Acepta todas las conexiones que llega por el puerto
 				Socket sock = server.accept();
 				
-				//Flujo de entrada
-				DataInputStream input = new DataInputStream(sock.getInputStream());
+				//Creamos el flujo de datos de entrada
+				ObjectInputStream inputStream = new ObjectInputStream(sock.getInputStream());
 				
-				String mensaje = input.readUTF();
+				datosInput = (DatosPaquete) inputStream.readObject();
 				
-				textArea.append("\n " + mensaje);
+				nick = datosInput.getNickname();
+				ip = datosInput.getIp();
+				texto = datosInput.getTexto();
 				
-				sock.close();
+				textArea.append(String.format("[%s] (IP: %s): %s%n", nick, ip, texto ));
 			}
 			
 		} catch (IOException e) {
+			
+			e.printStackTrace();
+			
+		} catch (ClassNotFoundException e) {
 			
 			e.printStackTrace();
 		}
