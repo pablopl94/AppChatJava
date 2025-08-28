@@ -10,7 +10,7 @@ import javax.swing.*;
 public class PanelCliente extends JPanel {
 
     private JTextArea textArea;
-    private JTextField nickRem, ipRec;
+    private JTextField nickTextField, ipTextField;
     
 
     public PanelCliente() {
@@ -29,31 +29,31 @@ public class PanelCliente extends JPanel {
         nick.setForeground(Color.WHITE);
         nick.setFont(new Font("Arial", Font.PLAIN, 14));
         
-        nickRem = new JTextField(8);
-        nickRem.setBackground(Color.decode("#2C2F33"));
-        nickRem.setForeground(Color.WHITE);
-        nickRem.setCaretColor(Color.WHITE);
-        nickRem.setBorder(BorderFactory.createLineBorder(Color.decode("#595959"), 2));
-        nickRem.setFont(new Font("Arial", Font.PLAIN, 12));
+        nickTextField = new JTextField(8);
+        nickTextField.setBackground(Color.decode("#2C2F33"));
+        nickTextField.setForeground(Color.WHITE);
+        nickTextField.setCaretColor(Color.WHITE);
+        nickTextField.setBorder(BorderFactory.createLineBorder(Color.decode("#595959"), 2));
+        nickTextField.setFont(new Font("Arial", Font.PLAIN, 12));
 
         //Etiqueta y campo port
-        JLabel port = new JLabel("Port: ");
-        port.setForeground(Color.WHITE);
-        port.setFont(new Font("Arial", Font.PLAIN, 14));
+        JLabel ip = new JLabel("Port: ");
+        ip.setForeground(Color.WHITE);
+        ip.setFont(new Font("Arial", Font.PLAIN, 14));
         
-        ipRec = new JTextField(8);
-        ipRec.setBackground(Color.decode("#2C2F33"));
-        ipRec.setForeground(Color.WHITE);
-        ipRec.setCaretColor(Color.WHITE);
-        ipRec.setBorder(BorderFactory.createLineBorder(Color.decode("#595959"), 2));
-        ipRec.setFont(new Font("Arial", Font.PLAIN, 12));
+        ipTextField = new JTextField(8);
+        ipTextField.setBackground(Color.decode("#2C2F33"));
+        ipTextField.setForeground(Color.WHITE);
+        ipTextField.setCaretColor(Color.WHITE);
+        ipTextField.setBorder(BorderFactory.createLineBorder(Color.decode("#595959"), 2));
+        ipTextField.setFont(new Font("Arial", Font.PLAIN, 12));
       
         // Añadir en orden: Nick, campo nick, espacio, Port, campo port
         lamina.add(nick);
-        lamina.add(nickRem);
+        lamina.add(nickTextField);
         lamina.add(Box.createHorizontalStrut(20)); // Separador entre los dos grupos
-        lamina.add(port);
-        lamina.add(ipRec);
+        lamina.add(ip);
+        lamina.add(ipTextField);
         
         add(lamina, BorderLayout.NORTH);
         
@@ -119,12 +119,13 @@ public class PanelCliente extends JPanel {
                     //Creando via de comunicación
                     Socket sock = new Socket("192.168.0.13", 9999);
 
-                    //Creando el flujo de comunicación
-                    DataOutputStream dataOutput = new DataOutputStream(sock.getOutputStream());
-                    dataOutput.writeUTF(cuadroTexto.getText());
-
-                    // Limpiar el campo después de enviar
-                    cuadroTexto.setText("");
+                    //Instanciando clase DatosPaquete
+                    DatosPaquete datosOutput = new DatosPaquete();
+                    
+                    //Almacenar en las propiedades, los datos introducidos
+                    datosOutput.setNickname(nickTextField.getText());
+                    datosOutput.setIp(ipTextField.getText());
+                    datosOutput.setTexto(textArea.getText());
 
                 } catch (IOException e1) {
                     
