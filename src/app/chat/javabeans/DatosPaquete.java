@@ -1,7 +1,14 @@
 package app.chat.javabeans;
 
-public class DatosPaquete {
+import java.io.Serializable;
 
+public class DatosPaquete implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private String nickname;
 	private String ip;
 	private String texto;
